@@ -13,12 +13,12 @@ namespace CV_Console
 {
     internal class Program
     {
-        private const string data_url = @"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
+        private const string DataUrl = @"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
 
         private static async Task<Stream> GetDataStream()
         {
             var client = new HttpClient();
-            var result = await client.GetAsync(data_url, HttpCompletionOption.ResponseHeadersRead);
+            var result = await client.GetAsync(DataUrl, HttpCompletionOption.ResponseHeadersRead);
             return await result.Content.ReadAsStreamAsync();
         }
 
@@ -35,7 +35,7 @@ namespace CV_Console
             }
         }
 
-        private static DateTime[] GetDates() => GetDataLines()
+        private static IEnumerable<DateTime> GetDates() => GetDataLines()
             .First()
             .Split(',')
             .Skip(4)
@@ -59,7 +59,7 @@ namespace CV_Console
             }
         }
 
-        static void Main(string[] args)
+        private static void Main()
         {
             //foreach (var data_line in GetDataLines())
             //    Console.WriteLine(data_line);
