@@ -20,9 +20,9 @@ namespace CV_WPF.ViewModels
 
             var data_points = new List<DataPoint>((int)(360 / 0.1));
             const double to_rad = Math.PI / 180;
-            for (double x = 0d; x < 360; x += 0.1)
+            for (var x = 0d; x < 360; x += 0.1)
             {
-                double y = Math.Sin(x * to_rad);
+                var y = Math.Sin(x * to_rad);
                 data_points.Add(new DataPoint(x, y));
             }
             TestDataPoint = data_points;
@@ -42,24 +42,24 @@ namespace CV_WPF.ViewModels
         #endregion
 
         #region Window Title
-        private string title = "Statistic Analyses CV";
+        private string _title = "Statistic Analyses CV";
 
         /// <summary>Window Title</summary>
         public string Title
         {
-            get => title;
-            set => Set(ref title, value);
+            get => _title;
+            set => Set(ref _title, value);
         }
         #endregion
 
         #region Status : string - Status of program
-        private string status = "Ready!";
+        private string _status = "Ready!";
 
         /// <summary>Status of program</summary>
         public string Status
         {
-            get => status;
-            set => Set(ref status, value);
+            get => _status;
+            set => Set(ref _status, value);
         }
         #endregion
 
